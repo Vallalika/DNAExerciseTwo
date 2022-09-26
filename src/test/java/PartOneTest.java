@@ -26,8 +26,8 @@ public class PartOneTest {
 
     @Test
     public void canFindStopCodon(){
-        assertEquals(27,partOne.findStopCodon(dna, startIndex, stopCodonOne));
-        assertEquals(27,partOne.findStopCodon(dna, startIndex, stopCodonTwo));
-        assertEquals("TAG",partOne.findStopCodon(dna, startIndex, stopCodonThree));
+        assertEquals(11,partOne.findStopCodon(dna, startIndex, stopCodonOne));
+        assertEquals(18,partOne.findStopCodon(dna, startIndex, stopCodonTwo));
+        assertEquals(12,partOne.findStopCodon(dna, startIndex, stopCodonThree));
     }
 }
