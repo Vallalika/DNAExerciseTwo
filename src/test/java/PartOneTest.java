@@ -8,26 +8,26 @@ public class PartOneTest {
     PartOne partOne;
     String dna;
     int startIndex;
-    String stopCodonOne;
-    String stopCodonTwo;
-    String stopCodonThree;
+    String stopCodon;
 
     @Before
     public void before() {
         partOne = new PartOne();
-        //     ATG     TGA TAG   TAAATG
-        dna = "ATGATCGCTGATTAGGCTTAAATGACG";
         startIndex = 0;
-        stopCodonOne = "TGA";
-        stopCodonTwo = "TAA";
-        stopCodonThree = "TAG";
+        stopCodon = "TGA";
 
     }
 
     @Test
     public void canFindStopCodon(){
-        assertEquals(11,partOne.findStopCodon(dna, startIndex, stopCodonOne));
-        assertEquals(18,partOne.findStopCodon(dna, startIndex, stopCodonTwo));
-        assertEquals(12,partOne.findStopCodon(dna, startIndex, stopCodonThree));
+        //            ATG     TGA     TGA  TGA
+        String dna = "ATGATCGCTGATTAGGTGACGTGATGACG";
+        assertEquals(21,partOne.findStopCodon(dna, startIndex, stopCodon));
+    }
+
+    @Test
+    public void noStopCodon() {
+        String dna = "ATGATCGCTGGTTAGGCTTATATACCG";
+        assertEquals(dna.length(),partOne.findStopCodon(dna, startIndex, stopCodon));
     }
 }
