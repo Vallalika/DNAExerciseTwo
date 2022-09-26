@@ -30,4 +30,18 @@ public class PartOneTest {
         String dna = "ATGATCGCTGGTTAGGCTTATATACCG";
         assertEquals(dna.length(),partOne.findStopCodon(dna, startIndex, stopCodon));
     }
+
+    @Test
+    public void canFindValidGene() {
+        String dna = "ATGATCGCTGATTATGTGACGTGATAAGACG";
+        assertEquals("ATGATCGCTGATTATGTGACGTGATAA", partOne.findGene(dna));
+
+    }
+
+    @Test
+    public void noValidGene() {
+        String dna = "ATGATCGCTGATTATGTGACGTGATATGCCG";
+        assertEquals("", partOne.findGene(dna));
+
+    }
 }
