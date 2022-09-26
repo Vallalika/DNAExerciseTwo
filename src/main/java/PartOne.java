@@ -1,15 +1,12 @@
 public class PartOne {
     public int findStopCodon(String dna, int startIndex, String stopCodon) {
-        int stopIndex = dna.indexOf(stopCodon,startIndex+3);
-        if ( stopIndex != -1) {
-            String dnaString = dna.substring(startIndex, stopIndex + 3);
-            if (dnaString.length() % 3 == 0) {
-                return stopIndex;
-            } else {
-                return dnaString.length();
+        int currIndex = dna.indexOf(stopCodon,startIndex+3);
+        while ( currIndex != -1 ) {
+            if ( (currIndex + 2 - startIndex + 1) % 3 == 0) {
+                return currIndex;
             }
-        } else {
-            return dna.length();
+            currIndex = dna.indexOf(stopCodon,currIndex+1);
         }
+        return dna.length();
     }
 }
