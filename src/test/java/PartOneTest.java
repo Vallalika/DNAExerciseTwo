@@ -1,17 +1,23 @@
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
 public class PartOneTest {
 
     PartOne partOne;
-    String dna;
     int startIndex;
     String stopCodon;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream(); // create a new output stream called outContent
+    private final PrintStream originalOut = System.out; // assign standard output stream to originalOut variable
 
     @Before
     public void before() {
+        System.setOut(new PrintStream(outContent)); // assign outContent to be tbe new output stream
         partOne = new PartOne();
         startIndex = 0;
         stopCodon = "TGA";
@@ -39,9 +45,31 @@ public class PartOneTest {
     }
 
     @Test
+    public void canAssertOutputValue() {
+        System.out.println("This line is printed");
+        assertEquals("This line is printed", outContent.toString().trim());
+    }
+
+
+    @Test
     public void noValidGene() {
         String dna = "ATGATCGCTGATTATGTGACGTGATATGCCG";
         assertEquals("", partOne.findGene(dna));
 
+    }
+
+    @Test
+    public void canPrintAllCorrectGenes() {
+//                    ATG     TGA          TGA        ATG      TGA  ATGTGA
+        String dna = "ATGATCGCTGATTATGTGACGTGATAATGACGATGATCGCTTGATTATGTGACGTGATAAGACG";
+        partOne.printAllGenes(dna);
+        assertEquals("ATGATCGCTGATTATGTGACGTGA" + "\n" +
+                "ATGATCGCTTGA",outContent.toString().trim());
+
+    };
+
+    @After
+    public void restoreStreams() {
+        System.setOut(originalOut); // reassign originalOut to output stream
     }
 }
