@@ -22,7 +22,7 @@ public class PartThreeTest {
 
     @Test
     public void testCountGeneWhereNoValidGene() {
-        String dnaStrand = "ATGGAAGATTATAGATGCAGAAATGTTTAGATG";
+        String dnaStrand = "ATGGAAGATTATACATCCAGAAATCTTCAGATC";
         assertEquals(0,partThree.countGenes(dnaStrand));
     }
 }
