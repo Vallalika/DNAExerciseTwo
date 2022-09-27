@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 public class PartTwoTest {
     private PartTwo partTwo;
 
@@ -14,8 +16,10 @@ public class PartTwoTest {
         String dnaStrandOne = "GAATAACAAAAA";
         String dnaStrandTwo = "GAAGATAAGACAGAAAAA";
         String dnaStrandThree = "GAAGATAAGACAGAAATG";
-        assertEquals(4, PartTwo.howMany("aa",dnaStrandOne));
-        assertEquals(1, PartTwo.howMany("gaa",dnaStrandTwo));
-        assertEquals(1, PartTwo.howMany("atg", dnaStrandThree));
+        String dnaStrandFour = "GAAGATAAGACAGAAATC";
+        assertEquals(4, PartTwo.howMany("AA",dnaStrandOne));
+        assertEquals(2, PartTwo.howMany("GAA",dnaStrandTwo));
+        assertEquals(1, PartTwo.howMany("ATG", dnaStrandThree));
+        assertEquals(0, PartTwo.howMany("ATG", dnaStrandFour));
     }
 }
