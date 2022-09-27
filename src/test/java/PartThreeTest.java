@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 public class PartThreeTest {
 
     private PartThree partThree;
@@ -14,13 +16,13 @@ public class PartThreeTest {
     public void testCountGene() {
         String dnaStrandOne = "ATGGAAGATTAAGATGCAGAAATGTTAGATG";
         String dnaStrandTwo = "GATGAAGATAGCTAAGATGCAGAAATGTTAGATG";
-        assertEquals(2,partThree.countGene(dnaStrandOne));
-        assertEquals(1,partThree.countGene(dnaStrandOne));
+        assertEquals(2,partThree.countGenes(dnaStrandOne));
+        assertEquals(1,partThree.countGenes(dnaStrandTwo));
     }
 
     @Test
     public void testCountGeneWhereNoValidGene() {
         String dnaStrand = "ATGGAAGATTATAGATGCAGAAATGTTTAGATG";
-        assertEquals(0,partThree.countGene(dnaStrandOne));
+        assertEquals(0,partThree.countGenes(dnaStrand));
     }
 }

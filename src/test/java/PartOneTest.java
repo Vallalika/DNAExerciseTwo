@@ -68,8 +68,18 @@ public class PartOneTest {
                 "ATGACGATGATCGCTTGA" + "\n" + "ATGTGA",outContent.toString().trim());
     };
 
+    @Test
+    public void canPrintAllCorrectGenesTwo() {
+        //               ATG     TGA     TGA  TGATAATG            TGA  ATGTGA  TGA
+        String dna = "AAAATGATCGCTGATTATGTGACGTGATAATGACGATGATCGCTTGATTATGTGACGTGATAAGACG";
+        partOne.printAllGenes(dna);
+        assertEquals("ATGATCGCTGATTATGTGACGTGA" + "\n" +
+                "ATGACGATGATCGCTTGA" + "\n" + "ATGTGA", outContent.toString().trim());
+    }
+
     @After
     public void restoreStreams() {
         System.setOut(originalOut); // reassign originalOut to output stream
     }
+
 }
