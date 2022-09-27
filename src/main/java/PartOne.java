@@ -13,13 +13,15 @@ public class PartOne {
 
     public String findGene(String dna) {
         int startIndex = dna.indexOf("ATG", 0);
-        int tagCodon = findStopCodon(dna, startIndex,"TAG");
-        int taaCodon = findStopCodon(dna, startIndex, "TAA");
-        int tgaCodon = findStopCodon(dna, startIndex, "TGA");
-        int temp = Math.min(tagCodon,taaCodon);
-        int minIndex = Math.min(temp, tgaCodon);
-        if (minIndex < dna.length()) {
-            return dna.substring(startIndex, minIndex + 3);
+        if ( startIndex != -1) {
+            int tagCodon = findStopCodon(dna, startIndex, "TAG");
+            int taaCodon = findStopCodon(dna, startIndex, "TAA");
+            int tgaCodon = findStopCodon(dna, startIndex, "TGA");
+            int temp = Math.min(tagCodon, taaCodon);
+            int minIndex = Math.min(temp, tgaCodon);
+            if (minIndex < dna.length()) {
+                return dna.substring(startIndex, minIndex + 3);
+            }
         }
         return "";
     }
@@ -28,9 +30,11 @@ public class PartOne {
         String dnaStrand = dna;
         while (true) {
             String gene = findGene(dnaStrand);
-            if (gene.length() != 0) {
+            if (gene != "") {
                 System.out.println(gene);
-                dnaStrand = dnaStrand.substring(gene.length());
+                int geneIndex = dnaStrand.indexOf(gene);
+                int startIndex = geneIndex + gene.length();
+                dnaStrand = dnaStrand.substring(geneIndex + gene.length());
             } else {
                 break;
             }

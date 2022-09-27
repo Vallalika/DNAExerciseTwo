@@ -45,6 +45,20 @@ public class PartOneTest {
     }
 
     @Test
+    public void canNotFindValidGene() {
+        String dna = "ATGATCGCTAATCATCTCACGTCATACGACG";
+        assertEquals("", partOne.findGene(dna));
+
+    }
+
+    @Test
+    public void canNotFindValidGeneTwo() {
+        String dna = "ATCATCGCTAATCATCTCACGTCATACGACG";
+        assertEquals("", partOne.findGene(dna));
+
+    }
+
+    @Test
     public void canAssertOutputValue() {
         System.out.println("This line is printed");
         assertEquals("This line is printed", outContent.toString().trim());
@@ -61,8 +75,8 @@ public class PartOneTest {
 
     @Test
     public void canPrintAllCorrectGenes() {
-//                    ATG     TGA          TGA        ATG      TGA  ATGTGA
-        String dna = "ATGATCGCTGATTATGTGACGTGATAATGACGATGATCGCTTGATTATGTGACGTGATAAGACG";
+//                    ATG     TGA          TGA   ATG    TGA     TGA   ATGTGA
+        String dna = "ATGATCGCTGATTATGTGACGTGACTAATGACGATGATCGCTTGACTTATGTGACGTGATAAGACG";
         partOne.printAllGenes(dna);
         assertEquals("ATGATCGCTGATTATGTGACGTGA" + "\n" +
                 "ATGACGATGATCGCTTGA" + "\n" + "ATGTGA",outContent.toString().trim());
