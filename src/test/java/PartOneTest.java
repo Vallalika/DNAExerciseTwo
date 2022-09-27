@@ -40,7 +40,7 @@ public class PartOneTest {
     @Test
     public void canFindValidGene() {
         String dna = "ATGATCGCTGATTATGTGACGTGATAAGACG";
-        assertEquals("ATGATCGCTGATTATGTGACGTGATAA", partOne.findGene(dna));
+        assertEquals("ATGATCGCTGATTATGTGACGTGA", partOne.findGene(dna));
 
     }
 
@@ -53,7 +53,8 @@ public class PartOneTest {
 
     @Test
     public void noValidGene() {
-        String dna = "ATGATCGCTGATTATGTGACGTGATATGCCG";
+//                    ATG     TGA     TGA
+        String dna = "ATGATCGCTGATTATGTGACGTTATATGCCG";
         assertEquals("", partOne.findGene(dna));
 
     }
@@ -64,8 +65,7 @@ public class PartOneTest {
         String dna = "ATGATCGCTGATTATGTGACGTGATAATGACGATGATCGCTTGATTATGTGACGTGATAAGACG";
         partOne.printAllGenes(dna);
         assertEquals("ATGATCGCTGATTATGTGACGTGA" + "\n" +
-                "ATGATCGCTTGA",outContent.toString().trim());
-
+                "ATGACGATGATCGCTTGA" + "\n" + "ATGTGA",outContent.toString().trim());
     };
 
     @After
