@@ -14,11 +14,11 @@ public class PartTwoTest {
     @Test
     public void canFindHowMany() {
         String dnaStrandOne = "GAATAACAAAAA";
-        String dnaStrandTwo = "GAAGATAAGACAGAAAAA";
+        String dnaStrandTwo = "ATGAACGAATTGAATC";
         String dnaStrandThree = "GAAGATAAGACAGAAATG";
         String dnaStrandFour = "GAAGATAAGACAGAAATC";
         assertEquals(4, PartTwo.howMany("AA",dnaStrandOne));
-        assertEquals(2, PartTwo.howMany("GAA",dnaStrandTwo));
+        assertEquals(3, PartTwo.howMany("GAA",dnaStrandTwo));
         assertEquals(1, PartTwo.howMany("ATG", dnaStrandThree));
         assertEquals(0, PartTwo.howMany("ATG", dnaStrandFour));
     }
